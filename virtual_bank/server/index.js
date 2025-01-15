@@ -21,7 +21,8 @@ const Accounts = mongoose.model('Accounts', {
     lastName: String, 
     accountNumber: String,
     personalId: String,
-    passportPhoto: String
+    passportPhoto: String,
+    balance: Number
  });
 
 // Konfiguracinė eilutė norint gauti duomenis JSON formatu
