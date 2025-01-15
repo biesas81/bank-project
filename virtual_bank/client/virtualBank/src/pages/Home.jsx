@@ -57,7 +57,7 @@ const Home = () => {
                                             <p className="card-text">Balansas: {value.balance} EUR</p>
                                             <div className='row'>
                                                 <div className='col-6 mb-3'>
-                                                    <Link to={'/topup/' + value._id} className="btn btn-success w-100 h-100 d-flex align-items-stretch">Pridėti lėšų</Link>
+                                                    <Link to={`/topup/${value._id}`} className="btn btn-success w-100 h-100 d-flex align-items-stretch">Pridėti lėšų</Link>
                                                 </div>
                                                 <div className='col-6 mb-3'>
                                                     <Link to={`/reduce/${value._id}`} className="btn btn-warning ml-1 w-100 h-100 d-flex align-items-stretch">Nuskaičiuoti lėšas</Link>

@@ -7,21 +7,20 @@ const NewAccount = () => {
     const navigate = useNavigate();
     const [alert, setAlert] = useState({});
 
-    // Funkcija, kuri apdoroja formos pateikimą
+    // funkcija, kuri apdoroja formos pateikimą
     const handleSubmit = (e) => {
         e.preventDefault();
 
         // helperis, kad gauti duomenis iš formos
         const data = extractFormData(e.target);
-        data.balance = 0;  // Pradinis balansas visada bus 0
-
+        
         axios.post('/api', data)
             .then(resp => {
                 setAlert({
                     message: resp.data,
                     status: 'success'
                 });
-                // Po 3 sekundžių nukreipimas į Home
+                // po 3 sekundžių nukreipimas į Home
                 setTimeout(() => {
                     navigate('/');
                 }, 3000);
@@ -60,15 +59,6 @@ const NewAccount = () => {
                         className="form-control"
                         name="lastName"
                         placeholder="Last Name"
-                        required
-                    />
-                </div>
-                <div className="mb-3">
-                    <input
-                        type="text"
-                        className="form-control"
-                        name="accountNumber"
-                        placeholder="IBAN"
                         required
                     />
                 </div>
