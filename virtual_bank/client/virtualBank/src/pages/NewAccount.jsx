@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import { extractFormData } from '../helpers/util'; 
 
 const NewAccount = () => {
     const navigate = useNavigate();
@@ -12,7 +11,7 @@ const NewAccount = () => {
         e.preventDefault();
 
         // helperis, kad gauti duomenis iš formos
-        const data = extractFormData(e.target);
+        const data = new FormData(e.target);
         
         axios.post('/api', data)
             .then(resp => {
@@ -73,10 +72,10 @@ const NewAccount = () => {
                 </div>
                 <div className="mb-3">
                     <input
-                        type="text"
+                        type="file"
                         className="form-control"
                         name="passportPhoto"
-                        placeholder="passportPhoto Link"
+                        required
                     />
                 </div>
 

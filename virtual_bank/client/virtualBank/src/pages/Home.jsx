@@ -54,6 +54,7 @@ const Home = () => {
                                             {/* sąskaitos duomenys */}
                                             <h5 className="card-title">{value.firstName} {value.lastName}</h5>
                                             <p className="card-text">Sąskaitos numeris: {value.accountNumber}</p>
+                                            <p className="card-text">Asmens kodas: {value.personalId}</p>
                                             <p className="card-text">Balansas: {value.balance} EUR</p>
                                             <div className='row'>
                                                 <div className='col-6 mb-3'>
