@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 
-const Home = () => {
+const Accounts = () => {
     const [data, setData] = useState([]);
     const [alert, setAlert] = useState({});
     const [refresh, setRefresh] = useState(false);
@@ -82,4 +82,4 @@ const Home = () => {
     );
 };
 
-export default Home;
+export default Accounts;

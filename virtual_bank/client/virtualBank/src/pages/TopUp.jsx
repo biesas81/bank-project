@@ -40,7 +40,7 @@ const TopUp = () => {
                     status: 'success'
                 });
                 setTimeout(() => {
-                    navigate('/');
+                    navigate('/accounts');
                 }, 2000);
             })
             .catch(err => setAlert({

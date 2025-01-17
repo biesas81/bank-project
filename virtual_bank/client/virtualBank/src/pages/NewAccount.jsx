@@ -21,7 +21,7 @@ const NewAccount = () => {
                 });
                 // po 3 sekundžių nukreipimas į Home
                 setTimeout(() => {
-                    navigate('/');
+                    navigate('/accounts');
                 }, 3000);
             })
             .catch(err => {
