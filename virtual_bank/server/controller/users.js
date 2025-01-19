@@ -13,20 +13,25 @@ router.get('/users', auth, async (req, res) => {
 });
 
 router.post('/login', async (req, res) => {
-    if(!req.body.email || !req.body.password)
-        return res.status(500).json('Negauti prisijungimo duomenys');
-    const data = await users.findOne({ email: req.body.email, password: req.body.password });
-    
-    if(!data) 
-        return res.status(401).json('Neteisingi prisijungimo duomenys');
-    
-    req.session.user = {
-        firstName: data.firstName,
-        lastName: data.lastName,
-        email: data.email
-    };
+    try {
+        if (!req.body.email || !req.body.password)
+            return res.status(400).json('Negauti prisijungimo duomenys');
+        const data = await users.findOne({ email: req.body.email, password: req.body.password });
 
-    res.json(req.session.user);
+        if (!data)
+            return res.status(401).json('Neteisingi prisijungimo duomenys');
+
+        req.session.user = {
+            firstName: data.firstName,
+            lastName: data.lastName,
+            email: data.email
+        };
+
+        res.json(req.session.user);
+    } catch (error) {
+        console.error("Error during login:", error); // Pridedame klaidos žinutę
+        res.status(500).json('Įvyko serverio klaida');
+    }
 });
 
 router.post('/register', async (req, res) => {
@@ -40,14 +45,24 @@ router.post('/register', async (req, res) => {
 });
 
 router.get('/check-auth', auth, (req, res) => {
-    res.json(req.session.user);
-});
+    try {
+        if (!req.session.user) {
+            return res.status(401).json({ message: 'Vartotojas neprisijungęs' });
+        }
+        res.json(req.session.user);
+    } catch (error) {
+        res.status(500).json('Įvyko serverio klaida');
+    }
+    });
 
 router.get('/logout', auth, (req, res) => {
-    // Sesijos duomenų ištrynimas
+    try {
     req.session.destroy();
-
     res.json("Sėkmingai atsijungėte");
+    } catch (error) {
+        res.status(500).json('Įvyko serverio klaida');
+    }
+
 });
 
 export default router;
