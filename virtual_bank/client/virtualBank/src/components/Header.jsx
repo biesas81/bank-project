@@ -14,7 +14,7 @@ const Header = ({ user, setUser }) => {
     return (
 
         <header className="container text-bg-dark d-flex justify-content-center py-3">
-            <ul className="nav nav-pills">
+            <ul className="nav nav-pills flex-column flex-sm-row">
                 {user ?
                     <>
                         <li className="nav-item">

@@ -50,28 +50,28 @@ const Accounts = () => {
                         {data.sort((a, b) => a.lastName.localeCompare(b.lastName))  // rūšiavimas pagal pavardę
                             .map((value) => (
                                 <div key={value._id} className="col-12 col-md-6 col-lg-4 mb-3 card">
-                                        <div className="card-body">
-                                            {/* sąskaitos duomenys */}
-                                            <h5 className="card-title">{value.firstName} {value.lastName}</h5>
-                                            <p className="card-text">Sąskaitos numeris: {value.accountNumber}</p>
-                                            <p className="card-text">Asmens kodas: {value.personalId}</p>
-                                            <p className="card-text">Balansas: {value.balance} EUR</p>
-                                            <div className='row'>
-                                                <div className='col-6 mb-3'>
-                                                    <Link to={`/topup/${value._id}`} className="btn btn-success w-100 h-100 d-flex align-items-stretch">Pridėti lėšų</Link>
-                                                </div>
-                                                <div className='col-6 mb-3'>
-                                                    <Link to={`/reduce/${value._id}`} className="btn btn-warning ml-1 w-100 h-100 d-flex align-items-stretch">Nuskaičiuoti lėšas</Link>
-                                                </div>
-                                            </div>
-                                            <button
-                                                className="btn btn-danger mt-2"
-                                                onClick={() => deleteAccount(value._id)}
-                                                disabled={value.balance !== 0}
-                                            >
-                                                Ištrinti
-                                            </button>
+                                    <div className="card-body">
+                                        {/* sąskaitos duomenys */}
+                                        <h5 className="card-title">{value.firstName} {value.lastName}</h5>
+                                        <p className="card-text">Sąskaitos numeris: {value.accountNumber}</p>
+                                        <p className="card-text">Asmens kodas: {value.personalId}</p>
+                                        <p className="card-text">Balansas: {value.balance} EUR</p>
+
+                                        <div className='mb-3'>
+                                            <Link to={`/topup/${value._id}`} className="btn btn-success w-100">Pridėti lėšų</Link>
                                         </div>
+                                        <div className='mb-3'>
+                                            <Link to={`/reduce/${value._id}`} className="btn btn-warning w-100">Nuskaičiuoti lėšas</Link>
+                                        </div>
+
+                                        <button
+                                            className="btn btn-danger mt-2"
+                                            onClick={() => deleteAccount(value._id)}
+                                            disabled={value.balance !== 0}
+                                        >
+                                            Ištrinti
+                                        </button>
+                                    </div>
                                 </div>
                             ))}
 
